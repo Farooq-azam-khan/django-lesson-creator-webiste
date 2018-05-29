@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title%} Lessons {% endblock title %}
+
+{% block content %}
+<h1>Lessons <span>Displaying all the lessons we have in database</span></h1>
+<p>
+   todo: display most liked lesson of the week.
+</p>
+{% for obj in obj_list %}
+<div class="card text-center">
+  <div class="card-header">
+    Featured
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"> {{ obj.lesson_name}} </h5>
+    <p class="card-text"> Todo, make 1-2 sentences only. {{ obj.content}}</p>
+    <a href="#" class="btn btn-primary"> Read Lesson </a>
+  </div>
+  <div class="card-footer text-muted">
+    Added - {{ obj.timestamp }} | Updated - {{ obj.updated }}
+  </div>
+</div>
+<br />
+{% endfor %}
+
+
+{% endblock content %}
