@@ -14,13 +14,6 @@
 </ul>
 {% endif %}
 
-<!-- <form method="POST"> {% csrf_token %}
-   <input type='text' name='lesson_name' placeholder='lesson title'/>
-   <input type='text' name='subtitle' placeholder='lesson subtitle'/>
-   <input type='text' name='content' placeholder='lesson content'/>
-   <input type='text' name='subject' placeholder='lesson subject'/>
-   <input type='submit' value='submit' />
-</form> -->
 <form method="post"> {% csrf_token %}
    {{ form.as_p }}
    <input type="submit" value="Submit" />

@@ -52,27 +52,12 @@ class LessonPlanDetailView(DetailView):
 class CreateLessonFormView(FormView):
     template_name = "form.html"
     form_class = LessonCreateForm
-    # success_url = '/'
+    success_url = '/lessons/'
 
     def form_valid(self, form):
         print("valid form")
         return super().form_valid(form)
 
-# unsafe form creation: no validation
-# def create_lesson_create_view(request):
-#     template_name = 'form.html'
-#     context = {}
-#     if request.method == "POST":
-#         print("post data recieved")
-#         print(request.POST)
-#         data = request.POST
-#         title = data['title'] # or request.POST.get('title')
-#         subtitle = data['subtitle']
-#         content = data['content']
-#         subject = data['subject']
-#         LessonPlan.objects.create(lesson_name=title, subtitle=subtitle, content=content, is_draft=False, subject=subject)
-#         return HttpResponseRedirect('/lessons/')
-#     return render(request, template_name, context)
 
 def create_lesson_create_view(request):
     form = LessonCreateForm(request.POST or None)
