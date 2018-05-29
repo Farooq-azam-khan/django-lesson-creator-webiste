@@ -1,13 +1,21 @@
 from django.db import models
 from django.db.models.signals import pre_save, post_save
+from django.conf import settings
+from django.contrib.auth import get_user_model
 
 from .utils import unique_slug_generator
 from .validators import validate_subject
 
+User = settings.AUTH_USER_MODEL
+def get_sentinel_user():
+    return get_user_model().objects.get_or_create(username='deleted')[0]
+
 class LessonPlan(models.Model):
-    lesson_name = models.CharField(max_length=100, unique=True)
-    subtitle = models.CharField(max_length=200, unique=False, blank=True, null=True)
-    content = models.TextField()
+    owner = models.ForeignKey(User, on_delete=models.SET(get_sentinel_user))
+    lesson_name = models.CharField(max_length=50, unique=True) #TODO:make is unique for user
+    subtitle = models.CharField(max_length=100, unique=False, blank=True, null=True)
+    # content = models.TextField()
+    abstract = models.CharField(max_length=200, blank=True, null=True)
     is_draft = models.BooleanField(default=False)
     subject = models.CharField(max_length=100, validators=[validate_subject])
     timestamp = models.DateTimeField(auto_now_add=True)
@@ -23,6 +31,24 @@ class LessonPlan(models.Model):
 
     class Meta:
         pass
+
+class Chapter(models.Model):
+    chapter_title = models.CharField(max_length=120, unique=True)
+    chapter_quote = models.CharField(max_length=200, blank=True, null=True)
+    chapter_quote_author = models.CharField(max_length=100, blank=True, null=True)
+    chapter_introduction = models.TextField()
+    lesson = models.ForeignKey(LessonPlan, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.chapter_title
+
+class Section(models.Model):
+    section_title = models.CharField(max_length=120, unique=False)
+    section_content = models.TextField()
+    chapter = models.ForeignKey(Chapter, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.section_title
 
 def pre_save_receiver(sender, instance, *args, **kwargs):
     # print(instance.timestamp)

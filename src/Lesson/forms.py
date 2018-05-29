@@ -23,7 +23,7 @@ class LessonPlanCreateForm(forms.ModelForm):
         fields = [
             'lesson_name',
             'subtitle',
-            'content',
+            'abstract',
             'is_draft',
             'subject'
         ]

@@ -7,57 +7,67 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-4">{{ object.lesson_name }} <small> {{ object.subject }}</small></h1>
-    <p class="lead">This is lesson was created {{ object.timestamp }} and updated {{ object.updated|timesince }}.</p>
+    <p class="lead">Abstract: <em>{{ object.abstract }}</em><br />
+      This is lesson was created {{ object.timestamp }} and updated {{ object.updated|timesince }}.</p>
   </div>
 </div>
 
-<!-- <h1> {{ object.lesson_name }} <small> {{ object.subject }}</small></h1>
-<span> {{ object.timestamp }} {{ object.updated }}</span> -->
 
-<nav id="navbar-example3" class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="#">{{ object.lesson_name }}</a>
-  <nav class="nav nav-pills flex-column">
-    <a class="nav-link" href="#item-1">Item 1</a>
-    <nav class="nav nav-pills flex-column">
-      <a class="nav-link ml-3 my-1" href="#item-1-1">Item 1-1</a>
-      <a class="nav-link ml-3 my-1" href="#item-1-2">Item 1-2</a>
-    </nav>
-    <a class="nav-link" href="#item-2">Item2</a>
-    <a class="nav-link" href="#item-3">Item3</a>
-    <nav class="nav nav-pills flex-column">
-      <a class="nav-link ml-3 my-1" href="#item-3-1">Item 3-1</a>
-      <a class="nav-link ml-3 my-1" href="#item-3-2">Item 3-2</a>
-    </nav>
-  </nav>
-</nav>
+<div class="row">
 
-<div data-spy="scroll" data-target="#navbar-example3" data-offset="0">
-  <h4 id="item-1">Item 1</h4>
-  <p> {{ object.content }}</p>
-  <h5 id="item-1-1">Item 1-1</h5>
-  <p>
-     Amet tempor mollit aliquip pariatur excepteur commodo do ea cillum commodo Lorem et occaecat elit qui et. Aliquip labore ex ex esse voluptate occaecat Lorem ullamco deserunt. Aliqua cillum excepteur irure consequat id quis ea. Sit proident ullamco aute magna pariatur nostrud labore. Reprehenderit aliqua commodo eiusmod aliquip est do duis amet proident magna consectetur consequat eu commodo fugiat non quis. Enim aliquip exercitation ullamco adipisicing voluptate excepteur minim exercitation minim minim commodo adipisicing exercitation officia nisi adipisicing. Anim id duis qui consequat labore adipisicing sint dolor elit cillum anim et fugiat.
- </p>
-  <h5 id="item-1-2">Item 2-2</h5>
-  <p>
-     Amet tempor mollit aliquip pariatur excepteur commodo do ea cillum commodo Lorem et occaecat elit qui et. Aliquip labore ex ex esse voluptate occaecat Lorem ullamco deserunt. Aliqua cillum excepteur irure consequat id quis ea. Sit proident ullamco aute magna pariatur nostrud labore. Reprehenderit aliqua commodo eiusmod aliquip est do duis amet proident magna consectetur consequat eu commodo fugiat non quis. Enim aliquip exercitation ullamco adipisicing voluptate excepteur minim exercitation minim minim commodo adipisicing exercitation officia nisi adipisicing. Anim id duis qui consequat labore adipisicing sint dolor elit cillum anim et fugiat.
- </p>
-  <h4 id="item-2">Item 2</h4>
-  <p>
-     Amet tempor mollit aliquip pariatur excepteur commodo do ea cillum commodo Lorem et occaecat elit qui et. Aliquip labore ex ex esse voluptate occaecat Lorem ullamco deserunt. Aliqua cillum excepteur irure consequat id quis ea. Sit proident ullamco aute magna pariatur nostrud labore. Reprehenderit aliqua commodo eiusmod aliquip est do duis amet proident magna consectetur consequat eu commodo fugiat non quis. Enim aliquip exercitation ullamco adipisicing voluptate excepteur minim exercitation minim minim commodo adipisicing exercitation officia nisi adipisicing. Anim id duis qui consequat labore adipisicing sint dolor elit cillum anim et fugiat.
- </p>
-  <h4 id="item-3">Item 3</h4>
-  <p>
-     Amet tempor mollit aliquip pariatur excepteur commodo do ea cillum commodo Lorem et occaecat elit qui et. Aliquip labore ex ex esse voluptate occaecat Lorem ullamco deserunt. Aliqua cillum excepteur irure consequat id quis ea. Sit proident ullamco aute magna pariatur nostrud labore. Reprehenderit aliqua commodo eiusmod aliquip est do duis amet proident magna consectetur consequat eu commodo fugiat non quis. Enim aliquip exercitation ullamco adipisicing voluptate excepteur minim exercitation minim minim commodo adipisicing exercitation officia nisi adipisicing. Anim id duis qui consequat labore adipisicing sint dolor elit cillum anim et fugiat.
- </p>
-  <h5 id="item-3-1">Item 3-1</h5>
-  <p>
-     Amet tempor mollit aliquip pariatur excepteur commodo do ea cillum commodo Lorem et occaecat elit qui et. Aliquip labore ex ex esse voluptate occaecat Lorem ullamco deserunt. Aliqua cillum excepteur irure consequat id quis ea. Sit proident ullamco aute magna pariatur nostrud labore. Reprehenderit aliqua commodo eiusmod aliquip est do duis amet proident magna consectetur consequat eu commodo fugiat non quis. Enim aliquip exercitation ullamco adipisicing voluptate excepteur minim exercitation minim minim commodo adipisicing exercitation officia nisi adipisicing. Anim id duis qui consequat labore adipisicing sint dolor elit cillum anim et fugiat.
- </p>
-  <h5 id="item-3-2">Item 3-2</h5>
-  <p>
-     Amet tempor mollit aliquip pariatur excepteur commodo do ea cillum commodo Lorem et occaecat elit qui et. Aliquip labore ex ex esse voluptate occaecat Lorem ullamco deserunt. Aliqua cillum excepteur irure consequat id quis ea. Sit proident ullamco aute magna pariatur nostrud labore. Reprehenderit aliqua commodo eiusmod aliquip est do duis amet proident magna consectetur consequat eu commodo fugiat non quis. Enim aliquip exercitation ullamco adipisicing voluptate excepteur minim exercitation minim minim commodo adipisicing exercitation officia nisi adipisicing. Anim id duis qui consequat labore adipisicing sint dolor elit cillum anim et fugiat.
- </p>
+<div class="col-3">
+   <nav id="navbar-example3" class="navbar navbar-light bg-light">
+      <div class="row">
+         <div class="col-12">
+         <a class="navbar-brand" href="#">{{ object.lesson_name }}</a>
+         </div>
+      <div class="col-12">
+
+     <nav class="nav nav-pills flex-column">
+        {% for ch in object.chapter_set.all %}
+      <a class="nav-link" href="#{{ ch.chapter_title }}">{{ ch.chapter_title }}</a>
+      <nav class="nav nav-pills flex-column">
+         {% for section in ch.section_set.all %}
+            <a class="nav-link ml-3 my-1" href="#{{ section.section_title }}">{{ section.section_title }}</a>
+         {% endfor %}
+      </nav>
+      {% endfor %}
+     </nav>
+  </div>
+  </div>
+   </nav>
+</div>
+
+   <div class="col-9">
+      <div data-spy="scroll" data-target="#navbar-example3" data-offset="0">
+         {% for ch in object.chapter_set.all %}
+            <h3 id="{{ ch.chapter_title }}">{{ ch.chapter_title }} </h3>
+            {% if ch.chapter_quote %}
+               <div class="card">
+                  <div class="card-header">Quote</div>
+                  <div class="card-body">
+                     <blockquote class="blockquote mb-0">
+                        <p>{{ ch.chapter_quote }}</p>
+                        <footer class="blockquote-footer">{{ ch.chapter_quote_author }}</footer>
+                     </blockquote>
+                  </div>
+               </div>
+            {% endif %}
+            {% if ch.chapter_introduction %}
+               <h4 id="introduction"> Introduction </h4>
+               <p>
+                  {{ ch.chapter_introduction }}
+              </p>
+           {% endif %}
+           {% for section in ch.section_set.all %}
+            <h5 id="{{ section.section_title }}">{{ section.section_title }}</h5>
+            <p> {{ section.section_content }} </p>
+           {% endfor %}
+         {% endfor %}
+
+      </div>
+   </div>
+
 </div>
 
 {% endblock content %}
