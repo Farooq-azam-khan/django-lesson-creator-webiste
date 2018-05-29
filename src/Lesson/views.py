@@ -7,7 +7,7 @@ from django.views.generic.edit import FormView
 from django.http import HttpResponse, HttpResponseRedirect
 
 from .models import LessonPlan
-from .forms import LessonCreateForm
+from .forms import LessonCreateForm, LessonPlanCreateForm
 
 class LessonListView(ListView):
     model = LessonPlan
@@ -60,22 +60,22 @@ class CreateLessonFormView(FormView):
 
 
 def create_lesson_create_view(request):
-    form = LessonCreateForm(request.POST or None)
+    form = LessonPlanCreateForm(request.POST or None)
     errors = None
     context = {'errors':errors, 'form':form}
 
     template_name = 'form.html'
     if form.is_valid():
-        obj = LessonPlan.objects.create(
-            lesson_name=form.cleaned_data.get("lesson_name"),
-            subtitle=form.cleaned_data.get("subtitle"),
-            is_draft=False,
-            content=form.cleaned_data.get("content"),
-            subject=form.cleaned_data.get("subject")
-        )
+        print("valid form")
+        form.save()
+        # obj = LessonPlan.objects.create(
+        #     lesson_name=form.cleaned_data.get("lesson_name"),
+        #     subtitle=form.cleaned_data.get("subtitle"),
+        #     is_draft=False,
+        #     content=form.cleaned_data.get("content"),
+        #     subject=form.cleaned_data.get("subject")
+        # )
         return HttpResponseRedirect("/lessons/")
     if form.errors:
         errors = form.errors
-
-
     return render(request, template_name, context)

@@ -1,5 +1,7 @@
 from django import forms
 
+from .models import LessonPlan
+
 class LessonCreateForm(forms.Form):
     lesson_name = forms.CharField(required=True)
     subtitle = forms.CharField(required=False)
@@ -12,3 +14,14 @@ class LessonCreateForm(forms.Form):
         if lesson_name == 'hello':
             raise forms.ValidationError("error: not a valid title")
         return lesson_name
+
+class LessonPlanCreateForm(forms.ModelForm):
+    class Meta:
+        model = LessonPlan
+        fields = [
+            'lesson_name',
+            'subtitle',
+            'content',
+            'is_draft',
+            'subject'
+        ]
