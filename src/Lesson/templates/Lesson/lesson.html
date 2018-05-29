@@ -7,22 +7,28 @@
 <p>
    todo: display most liked lesson of the week.
 </p>
-{% for obj in object_list %}
-<div class="card text-center">
-  <div class="card-header">
-    Featured
-  </div>
-  <div class="card-body">
-    <h5 class="card-title"> {{ obj.lesson_name}} <small>{{ obj.subject }}</small> </h5>
-    <p class="card-text"> Todo, make 1-2 sentences only. {{ obj.content}}</p>
-    <a href="#" class="btn btn-primary"> Read Lesson </a>
-  </div>
-  <div class="card-footer text-muted">
-    Added - {{ obj.timestamp }} | Updated - {{ obj.updated }}
-  </div>
-</div>
-<br />
-{% endfor %}
-
+{% if object_list %}
+   {% for obj in object_list %}
+   <div class="card text-center">
+     <div class="card-header">
+       Featured
+     </div>
+     <div class="card-body">
+       <h5 class="card-title"> {{ obj.lesson_name}} <small>{{ obj.subject }}</small> </h5>
+       <p class="card-text"> Todo, make 1-2 sentences only. {{ obj.content}}</p>
+       <a href="#" class="btn btn-primary"> Read Lesson </a>
+     </div>
+     <div class="card-footer text-muted">
+       Added - {{ obj.timestamp }} | Updated - {{ obj.updated }}
+     </div>
+   </div>
+   <br />
+   {% endfor %}
+{% else %}
+   <p>
+      Todo: form for creating a lesson. 
+      <a href="#">Create your own lesson.</a>
+   </p>
+{% endif %}
 
 {% endblock content %}
