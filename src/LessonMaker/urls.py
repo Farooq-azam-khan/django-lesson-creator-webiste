@@ -21,8 +21,6 @@ from django.conf.urls import url
 from Lesson.views import (LessonListView,
                         SearchLessonsListView,
                         LessonPlanDetailView,
-                        CreateLessonFormView,
-                        create_lesson_create_view,
                         LessonPlanCreateView)
 
 urlpatterns = [

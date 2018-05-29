@@ -9,12 +9,20 @@
       <li class="nav-item active">
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/lessons/">Lessons</a>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="/lessons/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Lessons
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+           <a class="dropdown-item" href="/lessons/">View Lessons</a>
+          <a class="dropdown-item" href="/lessons/create">Create</a>
+        </div>
       </li>
+
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
+          More Info
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="/about/">About</a>
@@ -23,6 +31,8 @@
           <a class="dropdown-item" href="/contact/">Donate</a>
         </div>
       </li>
+
+
       <!-- <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
       </li> -->

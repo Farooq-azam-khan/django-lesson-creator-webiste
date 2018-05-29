@@ -3,17 +3,15 @@
 {% block title %} Create Lesson {% endblock title %}
 
 {% block content %}
-<!-- {{ form }} -->
 
 <h1> Enter information </h1>
-{% if errors %}
-<ul>
-   {% for error in errors %}
-   <li>{{ error }}</li>
-   {% endfor %}
-</ul>
-{% endif %}
 
+{% if form.errors.non_field_errors %}
+<div class="alert alert-warning" role="alert">
+   {{ form.errors.non_field_errors }}
+</div>
+
+{% endif %}
 <form method="post"> {% csrf_token %}
    {{ form.as_p }}
    <input type="submit" value="Submit" />
