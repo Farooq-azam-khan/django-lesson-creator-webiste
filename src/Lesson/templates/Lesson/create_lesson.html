@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %} Create Lesson {% endblock title %}
+
+{% block content %}
+<h1> Enter information </h1>
+<form method="post"> {% csrf_token %}
+   {{ form.as_p }}
+   <input type="submit" value="Create Lesson" />
+</form>
+{% endblock content %}
