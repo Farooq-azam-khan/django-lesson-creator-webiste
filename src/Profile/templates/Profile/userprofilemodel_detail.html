@@ -3,5 +3,13 @@
 
 {% block content %}
 <h1> {{ object }} </h1>
-<img src="{{ object.profile_image.url }}" />
+<!-- <img src="{{ object.profile_image.url }}" /> -->
+{% if object.lessonplan_set.all %}
+<h1> Lessons Created </h1>
+<ul>
+   {% for lesson in object.lessonplan_set.all %}
+      {{ lesson }}
+   {% endfor %}
+</ul>
+{% endif %}
 {% endblock content %}

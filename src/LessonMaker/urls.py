@@ -30,7 +30,7 @@ from Finance.views import FinanceDetailView
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='home.html'), name="home"),
     url(r'^finance/(?P<pk>[\w-]+)/$', FinanceDetailView.as_view(), name="finance"),
-    url(r'^profile/(?P<pk>[\w-]+)/$', UserDetailView.as_view(), name="user-detailview"),
+    url(r'^profile/(?P<slug>[\w-]+)/$', UserDetailView.as_view(), name="user-detailview"),
     url(r'^lessons/$', LessonListView.as_view(), name="lessons-list"),
     url(r'^lessons/create/$', LessonPlanCreateView.as_view(), name="create-lesson"),
     url(r'^lessons/(?P<slug>[\w-]+)/$', LessonPlanDetailView.as_view(), name="search-lesson"),
