@@ -35,11 +35,6 @@ class SearchLessonsListView(ListView):
 class LessonPlanDetailView(DetailView):
     model = LessonPlan
 
-    def get_context_data(self, *args, **kwargs):
-        context = super(LessonPlanDetailView, self).get_context_data(*args, **kwargs)
-        # print(self.kwargs)
-        # print(context)
-        return context
 
     def get_object(self, *args, **kwargs):
         lsn_id = self.kwargs.get('lsn_id')
