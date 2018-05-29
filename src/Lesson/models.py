@@ -14,7 +14,6 @@ class LessonPlan(models.Model):
     owner = models.ForeignKey(User, on_delete=models.SET(get_sentinel_user))
     lesson_name = models.CharField(max_length=50, unique=True) #TODO:make is unique for user
     subtitle = models.CharField(max_length=100, unique=False, blank=True, null=True)
-    # content = models.TextField()
     abstract = models.CharField(max_length=200, blank=True, null=True)
     is_draft = models.BooleanField(default=False)
     subject = models.CharField(max_length=100, validators=[validate_subject])

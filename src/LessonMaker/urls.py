@@ -13,6 +13,8 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import TemplateView
 from django.urls import path
@@ -22,14 +24,17 @@ from Lesson.views import (LessonListView,
                         SearchLessonsListView,
                         LessonPlanDetailView,
                         LessonPlanCreateView)
+from Profile.views import UserDetailView
 
+from Finance.views import FinanceDetailView
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='home.html'), name="home"),
+    url(r'^finance/(?P<pk>[\w-]+)/$', FinanceDetailView.as_view(), name="finance"),
+    url(r'^profile/(?P<pk>[\w-]+)/$', UserDetailView.as_view(), name="user-detailview"),
     url(r'^lessons/$', LessonListView.as_view(), name="lessons-list"),
     url(r'^lessons/create/$', LessonPlanCreateView.as_view(), name="create-lesson"),
-    # url(r'^lessons/create/$', create_lesson_create_view), #.as_view(), name="create-lesson"),
     url(r'^lessons/(?P<slug>[\w-]+)/$', LessonPlanDetailView.as_view(), name="search-lesson"),
     url(r'^about/$', TemplateView.as_view(template_name='about.html'), name="about"),
     url(r'^contact/$', TemplateView.as_view(template_name='contact.html'), name="contact"),
     url(r'^admin/', admin.site.urls),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
