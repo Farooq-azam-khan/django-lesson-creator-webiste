@@ -18,11 +18,12 @@ from django.views.generic import TemplateView
 from django.urls import path
 from django.conf.urls import url
 # from Lesson.views import lesson_listview
-from Lesson.views import LessonListView
+from Lesson.views import LessonListView, EnglishLessonsListView
 
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='home.html'), name="home"),
-    url(r'^lessons/', LessonListView.as_view(), name="lessons-list"),
+    url(r'^lessons/$', LessonListView.as_view(), name="lessons-list"),
+    url(r'^lessons/english$', EnglishLessonsListView.as_view()),
     url(r'^about/$', TemplateView.as_view(template_name='about.html'), name="about"),
     url(r'^contact/$', TemplateView.as_view(template_name='contact.html'), name="contact"),
     url(r'^admin/', admin.site.urls),

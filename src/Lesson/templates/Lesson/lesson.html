@@ -7,13 +7,13 @@
 <p>
    todo: display most liked lesson of the week.
 </p>
-{% for obj in obj_list %}
+{% for obj in object_list %}
 <div class="card text-center">
   <div class="card-header">
     Featured
   </div>
   <div class="card-body">
-    <h5 class="card-title"> {{ obj.lesson_name}} </h5>
+    <h5 class="card-title"> {{ obj.lesson_name}} <small>{{ obj.subject }}</small> </h5>
     <p class="card-text"> Todo, make 1-2 sentences only. {{ obj.content}}</p>
     <a href="#" class="btn btn-primary"> Read Lesson </a>
   </div>

@@ -13,14 +13,13 @@ from .models import LessonPlan
 
 class LessonListView(ListView):
     model = LessonPlan
-    paginate_by = 20
+    # paginate_by = 1
     template_name = "Lesson/lesson.html"
+    queryset = LessonPlan.objects.all()
 
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(**kwargs)
-        print(context)
-        queryset = LessonPlan.objects.all()
-        context = {
-            "obj_list": queryset
-        }
-        return context
+
+class EnglishLessonsListView(ListView):
+    model = LessonPlan
+    # paginate_by = 1
+    template_name = "Lesson/lesson.html"
+    queryset = LessonPlan.objects.filter(subject__iexact="english")
