@@ -22,12 +22,14 @@ from Lesson.views import (LessonListView,
                         SearchLessonsListView,
                         LessonPlanDetailView,
                         CreateLessonFormView,
-                        create_lesson_create_view)
+                        create_lesson_create_view,
+                        LessonPlanCreateView)
 
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='home.html'), name="home"),
     url(r'^lessons/$', LessonListView.as_view(), name="lessons-list"),
-    url(r'^lessons/create/$', create_lesson_create_view), #.as_view(), name="create-lesson"),
+    url(r'^lessons/create/$', LessonPlanCreateView.as_view(), name="create-lesson"),
+    # url(r'^lessons/create/$', create_lesson_create_view), #.as_view(), name="create-lesson"),
     url(r'^lessons/(?P<slug>[\w-]+)/$', LessonPlanDetailView.as_view(), name="search-lesson"),
     url(r'^about/$', TemplateView.as_view(template_name='about.html'), name="about"),
     url(r'^contact/$', TemplateView.as_view(template_name='contact.html'), name="contact"),

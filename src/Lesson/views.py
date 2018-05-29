@@ -3,7 +3,7 @@ from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 from django.db.models import Q
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import FormView
+from django.views.generic.edit import FormView, CreateView
 from django.http import HttpResponse, HttpResponseRedirect
 
 from .models import LessonPlan
@@ -68,14 +68,13 @@ def create_lesson_create_view(request):
     if form.is_valid():
         print("valid form")
         form.save()
-        # obj = LessonPlan.objects.create(
-        #     lesson_name=form.cleaned_data.get("lesson_name"),
-        #     subtitle=form.cleaned_data.get("subtitle"),
-        #     is_draft=False,
-        #     content=form.cleaned_data.get("content"),
-        #     subject=form.cleaned_data.get("subject")
-        # )
         return HttpResponseRedirect("/lessons/")
     if form.errors:
         errors = form.errors
     return render(request, template_name, context)
+
+
+class LessonPlanCreateView(CreateView):
+    form_class = LessonPlanCreateForm
+    template_name = "form.html"
+    success_url = '/lessons/'
