@@ -55,6 +55,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'LessonMaker.urls'
+LOGIN_URL = '/login/'
 
 TEMPLATES = [
     {

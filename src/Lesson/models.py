@@ -2,7 +2,7 @@ from django.db import models
 from django.db.models.signals import pre_save, post_save
 from django.conf import settings
 from django.contrib.auth import get_user_model
-
+from django.urls import reverse
 from .utils import unique_slug_generator
 from .validators import validate_subject
 
@@ -23,6 +23,10 @@ class LessonPlan(models.Model):
 
     def __str__(self):
         return self.lesson_name
+
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'slug':self.slug})
+
 
     @property
     def title(self):

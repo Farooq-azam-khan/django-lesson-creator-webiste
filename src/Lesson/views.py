@@ -34,9 +34,9 @@ class LessonPlanDetailView(LoginRequiredMixin, DetailView):
 class LessonPlanCreateView(LoginRequiredMixin, CreateView):
     form_class = LessonPlanCreateForm
     template_name = "form.html"
-    success_url = '/lessons/'
+    success_url = '/'
     login_url = '/login/'
-    
+
     def form_valid(self, form):
         instance = form.save(commit=False)
         instance.owner = self.request.user

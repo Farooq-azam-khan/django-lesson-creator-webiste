@@ -17,14 +17,14 @@
            </div>
            <div class="card-body">
              <h5 class="card-title">
-                <a href="/lessons/{{ obj.slug }}">
+                <a href="{{ obj.get_absolute_url }}">
                    {{ obj.lesson_name }}  {% if obj.subtitle %}<small> {{ obj.subtitle }}</small> {% endif %}
                 </a>
              </h5>
              {{ obj.subject }}
 
              <p class="card-text"> Todo, make 1-2 sentences only. {{ obj.abstract}}</p>
-             <a href="/lessons/{{ obj.slug }}" class="btn btn-primary"> Read Lesson </a>
+             <a href="{{ obj.get_absolute_url }}" class="btn btn-primary"> Read Lesson </a>
            </div>
            <div class="card-footer text-muted">
              Added - {{ obj.timestamp }} | Updated - {{ obj.updated }}
