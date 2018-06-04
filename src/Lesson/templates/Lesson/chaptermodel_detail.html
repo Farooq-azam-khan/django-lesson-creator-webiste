@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %} Chapter: {{object.chapter_title }} {% endblock title %}
+
+{% block content %}
+{{ object.introduction }}
+{{ object.}}
+
+<h1> Introcution </h1>
+{{ object.chapter_introduction }}
+<h2> Related sections </h2>
+<ol>
+   {% for section in object.sectionmodel_set.all %}
+      <li>
+         <a href="{{ section.get_absolute_url }}">{{ section }}</a>
+      </li>
+   {% endfor %}
+</ol>
+{% endblock content %}

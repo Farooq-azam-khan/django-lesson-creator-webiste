@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import LessonPlan
+from .models import LessonPlan, ChapterModel, SectionModel
 from .validators import validate_subject
 
 # class LessonCreateForm(forms.Form):
@@ -42,3 +42,23 @@ class LessonPlanCreateForm(forms.ModelForm):
 
 # VALID_SUBJECTS = ['Math', 'Physics', 'English',
 # 'Computer Science', 'History']
+
+class ChapterForm(forms.ModelForm):
+    class Meta:
+        model = ChapterModel
+        fields = [
+            'lesson',
+            'chapter_title',
+            'chapter_quote',
+            'chapter_quote_author',
+            'chapter_introduction',
+        ]
+
+class SectionForm(forms.ModelForm):
+    class Meta:
+        model = SectionModel
+        fields = [
+            'chapter',
+            'section_title',
+            'section_content',
+        ]

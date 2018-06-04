@@ -7,6 +7,7 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-4">{{ object.lesson_name }} <small> {{ object.subject }}</small></h1>
+    <h3 class="display-6">Create <a href="{% url 'Lesson:create-chapter' %}">chapter</a>  or <a href="#">section</a> for this lesson.</h3>
     <em>Author:</em> <span>{{ object.owner.username }}</span>
     <p class="lead">Abstract: <em>{{ object.abstract }}</em><br />
       This is lesson was created {{ object.timestamp }} and updated {{ object.updated|timesince }}.</p>
@@ -25,10 +26,10 @@
       <div class="col-12">
 
      <nav class="nav nav-pills flex-column">
-        {% for ch in object.chapter_set.all %}
+        {% for ch in object.chaptermodel_set.all %}
       <a class="nav-link" href="#{{ ch.chapter_title }}">{{ ch.chapter_title }}</a>
       <nav class="nav nav-pills flex-column">
-         {% for section in ch.section_set.all %}
+         {% for section in ch.chaptermodel_set.all %}
             <a class="nav-link ml-3 my-1" href="#{{ section.section_title }}">{{ section.section_title }}</a>
          {% endfor %}
       </nav>
@@ -41,9 +42,9 @@
 
    <div class="col-9">
       <div data-spy="scroll" data-target="#navbar-example3" data-offset="0">
-         {% for ch in object.chapter_set.all %}
-            <h3 id="{{ ch.chapter_title }}">{{ ch.chapter_title }} </h3>
-            {% if ch.chapter_quote %}
+         {% for ch in object.chaptermodel_set.all %}
+            <h3 id="{{ ch.chapter_title }}"><a href="{{ ch.get_absolute_url }}">{{ ch.chapter_title }}</a></h3>
+            {% if ch.chapte_quote %}
                <div class="card">
                   <div class="card-header">Quote</div>
                   <div class="card-body">

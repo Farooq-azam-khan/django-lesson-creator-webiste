@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title%} Sections {% endblock title %}
+
+{% block content %}
+<h1>Lesson contains the following sections. </h1>
+{% if object_list %}
+<ol>
+   {% for obj in object_list %}
+   <li>
+      <em><a href="{{obj.get_absolute_url }}">{{ obj.section_title }}</a> </em>
+   </li>
+   {% endfor %}
+</ol>
+{% else %}
+<p>
+   add one.
+</p>
+{% endif %}
+
+
+{% endblock content %}

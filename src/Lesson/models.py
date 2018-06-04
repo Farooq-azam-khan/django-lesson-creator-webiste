@@ -25,7 +25,7 @@ class LessonPlan(models.Model):
         return self.lesson_name
 
     def get_absolute_url(self):
-        return reverse('detail', kwargs={'slug':self.slug})
+        return reverse('Lesson:detail', kwargs={'slug':self.slug})
 
 
     @property
@@ -33,22 +33,42 @@ class LessonPlan(models.Model):
         return self.lesson_name
 
     class Meta:
-        pass
+        ordering = ['-updated', '-timestamp']
 
-class Chapter(models.Model):
+class ChapterModel(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.SET(get_sentinel_user), default=1)
     chapter_title = models.CharField(max_length=120, unique=True)
     chapter_quote = models.CharField(max_length=200, blank=True, null=True)
     chapter_quote_author = models.CharField(max_length=100, blank=True, null=True)
-    chapter_introduction = models.TextField()
+    chapter_introduction = models.TextField(help_text="Write your Introduction here.")
     lesson = models.ForeignKey(LessonPlan, on_delete=models.CASCADE)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-updated', '-timestamp']
+
+    # def get_chapter_introduction(self):
+    #     return self.chapter_introduction
+    # def get_chapter_quote(self):
+    #     return self.chapter_quote
+
+    def get_absolute_url(self):
+        return reverse('Lesson:detail-chapter', kwargs={'pk':self.pk})
 
     def __str__(self):
         return self.chapter_title
 
-class Section(models.Model):
+class SectionModel(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.SET(get_sentinel_user), default=1)
     section_title = models.CharField(max_length=120, unique=False)
-    section_content = models.TextField()
-    chapter = models.ForeignKey(Chapter, on_delete=models.CASCADE)
+    section_content = models.TextField(help_text="Write your content here.")
+    chapter = models.ForeignKey(ChapterModel, on_delete=models.CASCADE)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def get_absolute_url(self):
+        return reverse('Lesson:detail-section', kwargs={'pk':self.pk})
 
     def __str__(self):
         return self.section_title

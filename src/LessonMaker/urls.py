@@ -21,16 +21,16 @@ from django.views.generic import TemplateView
 from django.urls import path
 from django.conf.urls import url
 from django.contrib.auth.views import LoginView
-from Profile.views import UserDetailView
 
-from Finance.views import FinanceDetailView
+# from Profile.views import UserHomeView
+
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='home.html'), name="home"),
-    path('lesson/', include('Lesson.urls')),
-    url(r'^finance/(?P<pk>[\w-]+)/$', FinanceDetailView.as_view(), name="finance"),
-    url(r'^profile/(?P<slug>[\w-]+)/$', UserDetailView.as_view(), name="user-detailview"),
+    url(r'^lessons/', include('Lesson.urls', namespace='Lesson')),
+    url(r'^profile/', include('Profile.urls', namespace='Profile')),
+    url(r'^finance/', include('Finance.urls', namespace='Finance')),
     url(r'^login/$', LoginView.as_view(), name='login'),
     url(r'^about/$', TemplateView.as_view(template_name='about.html'), name="about"),
     url(r'^contact/$', TemplateView.as_view(template_name='contact.html'), name="contact"),
     url(r'^admin/', admin.site.urls),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]
